@@ -25,7 +25,7 @@ Winston transport for Graylog2 for winston 3.x.
     }
   }
 
-  const GelfTransport = new GelfTransport(options);
+  const gelfTransport = new GelfTransport(options);
 
   const logger = () => winston.createLogger( {
     transports: [
