@@ -4,7 +4,11 @@ Winston transport for Graylog2 for winston 3.x.
 
 ## Installation
 
-``npm install winston-gelf``
+```
+npm install winston
+npm install winston-gelf
+
+```
 
 ## Usage
 ```javascript
