@@ -22,7 +22,9 @@
   },
   "homepage": "https://github.com/fchristle/winston-gelf#readme",
   "dependencies": {
-    "gelf-pro": "^1.2.2",
+    "gelf-pro": "^1.2.2"
+  },
+  "devDependencies": {
     "winston": "^3.1.0"
   }
 }
