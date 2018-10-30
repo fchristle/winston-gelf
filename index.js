@@ -6,7 +6,7 @@ const levels = {
   alert: 'alert',
   crit: 'critical',
   error: 'error',
-  warning: 'warning',
+  warn: 'warn',
   notice: 'notice',
   info: 'info',
   debug: 'debug'
