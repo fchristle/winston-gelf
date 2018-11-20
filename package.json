@@ -1,6 +1,6 @@
 {
   "name": "winston-gelf",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Winston gelf transport for winston 3.x",
   "main": "index.js",
   "scripts": {
@@ -16,6 +16,12 @@
     "graylog2"
   ],
   "author": "Fatima Gomez",
+  "contributors": [
+    {
+      "name": "Alberson Melo",
+      "email": "alberson@gmail.com"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/fchristle/winston-gelf/issues"

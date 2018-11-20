@@ -25,8 +25,16 @@ class GelfTransport extends Transport {
     });
 
     const {level, message} = info;
+
+    const extra = {}
+    Object.keys(info).forEach((key) => {
+      if (key !== 'level' && key !== 'message' && key !== 'error'){
+        extra[key] = info[key];
+      }
+    });
+
     const graylogLevel = levels[level] || levels.info;
-    this.logger[graylogLevel](message);
+    this.logger[graylogLevel](message, extra);
 
     callback();
   }
