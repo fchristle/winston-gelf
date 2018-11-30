@@ -37,4 +37,13 @@ npm install winston-gelf
       gelfTransport
     ]
   });
+
+
+  logger.info('Hello there');
+
+  try {
+    ///...
+  } catch(err) {
+    logger.log({level: 'warn', message: 'Failed something', error: err});
+  }
 ```

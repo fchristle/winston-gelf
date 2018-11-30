@@ -24,13 +24,11 @@ class GelfTransport extends Transport {
       this.emit('logged', {level, message, extra});
     });
 
-    if (extra instanceof Error) {
-      extra = {error: extra.stack};
-    } else if (typeof extra === 'object') {
+    if (typeof extra === 'object') {
       for (const key in extra) {
         const value = extra[key];
         if (value instanceof Error) {
-          extra[key] = value.stack;
+          extra = value;
         }
       }
     }
