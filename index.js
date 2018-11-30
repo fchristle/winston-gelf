@@ -9,8 +9,8 @@ const levels = {
   warn: 'warn',
   notice: 'notice',
   info: 'info',
-  debug: 'debug'
-}
+  debug: 'debug',
+};
 
 class GelfTransport extends Transport {
   constructor(opts) {
@@ -19,19 +19,21 @@ class GelfTransport extends Transport {
     this.logger.setConfig(opts.gelfPro);
   }
 
-  log(info, callback) {
+  log({level, message, ...extra}, callback) {
     setImmediate(() => {
-      this.emit('logged', info);
+      this.emit('logged', {level, message, extra});
     });
 
-    const {level, message} = info;
-
-    const extra = {}
-    Object.keys(info).forEach((key) => {
-      if (key !== 'level' && key !== 'message' && key !== 'error'){
-        extra[key] = info[key];
+    if (extra instanceof Error) {
+      extra = {error: extra.stack};
+    } else if (typeof extra === 'object') {
+      for (const key in extra) {
+        const value = extra[key];
+        if (value instanceof Error) {
+          extra[key] = value.stack;
+        }
       }
-    });
+    }
 
     const graylogLevel = levels[level] || levels.info;
     this.logger[graylogLevel](message, extra);
@@ -40,4 +42,4 @@ class GelfTransport extends Transport {
   }
 }
 
-module.exports = exports = GelfTransport
+module.exports = exports = GelfTransport;
