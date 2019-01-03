@@ -15,7 +15,7 @@ const levels = {
 class GelfTransport extends Transport {
   constructor(opts) {
     super(opts);
-    this.logger = logger;
+    this.logger = Object.create(logger);
     this.logger.setConfig(opts.gelfPro);
   }
 
