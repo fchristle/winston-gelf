@@ -38,6 +38,10 @@ class GelfTransport extends Transport {
 
     callback();
   }
+
+  setConfig(opts) {
+    this.logger.setConfig(opts.gelfPro);
+  }
 }
 
 module.exports = exports = GelfTransport;
