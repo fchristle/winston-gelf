@@ -33,7 +33,7 @@ class GelfTransport extends Transport {
       }
     }
 
-    const graylogLevel = levels[level] || levels.info;
+    const graylogLevel = levels[level.replace(/\x1B[[(?);]{0,2}(;?\d)*./g, '')] || levels.info;
     this.logger[graylogLevel](message, extra);
 
     callback();
